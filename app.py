@@ -1,4 +1,4 @@
-from flask import Flask, request, Response
+from flask import Flask, request, Response, render_template
 import os
 from io import BytesIO
 from gtts import gTTS
@@ -17,5 +17,9 @@ def home():
 
     return Response(fp.getvalue(), mimetype='audio/mpeg') # 페이지 전달없이 바로 재생
 
+@app.route("/menu")
+def menu():
+    return render_template("menu.html") # 사용자가 /menu로 접속시 Flask가 이 파일 찾아서 내용 읽고 html형태로 브라우저한테 보내줌
+
 if __name__ == '__main__':
-    app.run('0.0.0.0', 5000)
+    app.run('0.0.0.0', 80)
