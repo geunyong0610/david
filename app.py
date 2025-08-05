@@ -29,5 +29,9 @@ def menu():
 
     return render_template("menu.html", computername=hostname) # 사용자가 /menu로 접속시 Flask가 이 파일 찾아서 내용 읽고 html형태로 브라우저한테 보내줌
 
+@app.route("/test2")
+def test2():
+    return render_template('test2.html')
+    
 if __name__ == '__main__':
     app.run('0.0.0.0', 80, debug=True)#Flask가 개발자를 위해 자동 리로드+ 상세오류페이지 제공(Flask자체의 디버깅 기능 
