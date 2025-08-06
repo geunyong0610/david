@@ -1,23 +1,7 @@
-from flask import Flask, request, Response, render_template 
+from flask import Flask, render_template 
 import socket
-import os
-from io import BytesIO
-from gtts import gTTS
 
-
-DEFAULT_LANG = os.getenv('DEFAULT_LANG', 'ko')
 app = Flask(__name__)
-
-# @app.route("/")
-# def home():
-
-#     text = "Hello, DevOps"
-
-#     lang = request.args.get('lang', DEFAULT_LANG)
-#     fp = BytesIO()
-#     gTTS(text, "com", lang).write_to_fp(fp)
-
-#     return Response(fp.getvalue(), mimetype='audio/mpeg') # 페이지 전달없이 바로 재생
 
 @app.route("/")
 def home():
@@ -26,7 +10,6 @@ def home():
     else:
         hostname = ' '
     
-
     return render_template("index.html", computername=hostname) # 사용자가 /menu로 접속시 Flask가 이 파일 찾아서 내용 읽고 html형태로 브라우저한테 보내줌
     
 if __name__ == '__main__':
